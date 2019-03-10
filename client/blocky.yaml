@@ -1,0 +1,12 @@
+client:
+    interval:     60
+
+server:
+    apiurl:        https://blocky.foo.org/blocky/api
+    # bla bla bla
+    #legacyurl:     https://blocky.apache.org/blocky.json
+
+iptables:
+    chains:
+        - INPUT
+        - fail2ban-default
