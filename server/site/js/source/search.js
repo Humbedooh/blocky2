@@ -117,7 +117,7 @@ function search_callback(state, json) {
         
         for (var i = 0; i < json.results.iptables.length; i++) {
             let res = json.results.iptables[i];
-            let txt = _div("Found on %s, iptables line %u, as %s".format(res.hostname, res.linenumber, res.source));
+            let txt = _div("Found on %s, iptables line %u in the %s chain, as %s".format(res.hostname, res.linenumber, res.chain, res.source));
             div.inject(txt);
         }
     }
