@@ -59,9 +59,12 @@ import plugins.worker
 def find_rule(DB, doctype, ip):
     """ Find a rule, either v1 or v2 style """
     bid = plugins.worker.make_sha1(str(ip))
+    bid2 = plugins.worker.make_sha1(str(ip).replace('/32', '').replace('/128',''))
     # Blocky/2 ban doc
     if DB.ES.exists(index=DB.dbname, doc_type = doctype, id = bid):
         return DB.ES.get(index=DB.dbname, doc_type = doctype, id = bid)
+    if DB.ES.exists(index=DB.dbname, doc_type = doctype, id = bid2):
+        return DB.ES.get(index=DB.dbname, doc_type = doctype, id = bid2)
     
     # Blocky/1 ban doc
     oid = str(ip).replace('/', '_').replace('_32', '').replace('_128', '')
