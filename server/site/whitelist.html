@@ -1,0 +1,56 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Whitelisting - Blocky/2</title>
+    <link rel="stylesheet" type="text/css" href="css/blocky.css">
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
+    <link rel="stylesheet" type="text/css" href="css/pikaday.css">
+  </head>
+  <body onload="init_whitelist();">
+      <nav id="topmenu">
+        <img src="images/logo.svg" style="height: 54px; margin: 2px 20px; "/>
+        <ul>
+          <li><a href="./">Front page</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="rules.html">Ban Rules</a></li>
+          <li><a href="whitelist.html">Whitelist</a></li>
+          <li><a href="addban.html">Add a ban</a></li>
+          <li><a href="activity.html">Activity Log</a></li>
+        </ul>
+      </nav>
+      
+    <div id="wrapper">
+      <form onsubmit="add_whitelist();return false;">
+        <h3 class="subtitle">Add a whitelist entry:</h3>
+        IP/CIDR: <input type="text" id="source"/> &nbsp; <input type="checkbox" id="force"/><label for="force">Force whitelisting (remove conflicting bans)</label><br/>
+        Target: &nbsp; <input type="text" id="target" value="*"/> <i>Use <kbd>foo.apache.org or * for all boxes</kbd></i><br/>
+        Reason:&nbsp; <input type="text" id="reason" style="width: 320px;"/><br/>
+        Expires:&nbsp; <input type="text" id="timeout" value="never"/><input type="button" id="pick" value="Pick a date"><br/>
+        
+        <input type="submit" value="Add whitelisting"/>
+      </form>
+      <div id="whitelist">
+        
+      </div>
+    </div>
+    <script src="js/moment.js" type="text/javascript"></script>
+    <script src="js/timezones.js" type="text/javascript"></script>
+    <script src="js/blocky.js" type="text/javascript"></script>
+    <script src="js/pikaday.js" type="text/javascript"></script>
+    <script>
+          var picker = new Pikaday(
+    {
+        field: document.getElementById('pick'),
+        firstDay: 1,
+        minDate: new Date(),
+        maxDate: new Date(2030, 12, 31),
+        onSelect: function() {
+            document.getElementById('timeout').value = parseInt(this.getMoment().valueOf()/1000);
+        }
+    });
+        </script>
+  </body>
+</html>
+

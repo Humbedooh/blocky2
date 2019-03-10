@@ -1,0 +1,14 @@
+########################################################################
+# SearchResult                                                         #
+########################################################################
+properties:
+  banlist:
+    type: array
+    description: Banned IP blocks found matching
+  whitelist:
+    type: array
+    description: Whitelisted IP blocks found matching
+  iptables:
+    type: array
+    description: Banned IP blocks found matching in local iptables
+    

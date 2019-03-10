@@ -1,0 +1,12 @@
+accounts:
+  allowSignup: true
+  verify: false
+elasticsearch:
+  dbname: blocky
+  host: localhost
+  port: 9200
+  ssl: false
+mail:
+  mailhost: localhost
+  mailport: '25'
+  sender: Blocky Server <blocky@apache.org>

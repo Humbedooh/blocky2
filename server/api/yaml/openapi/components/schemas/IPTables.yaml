@@ -1,0 +1,10 @@
+########################################################################
+# Timeseries                                                           #
+########################################################################
+properties:
+  hostname:
+    type: string
+  iptables:
+    items:
+      $ref: '#/components/schemas/IPTablesObject'
+    type: array

@@ -1,0 +1,23 @@
+########################################################################
+# Ruleset                                                              #
+########################################################################
+properties:
+  rid:
+    type: string
+    description: rule ID, if overriding a previous rule
+  name:
+    type: string
+    description: The name of the rule
+  type:
+    type: string
+    description: The type of rule
+  limit:
+    type: integer
+    description: The limit that causes a ban
+  span:
+    type: integer
+    description: The span (in hours) within which to look for offenses
+  query:
+    type: array
+    description: "The individual query args to look for"
+

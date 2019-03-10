@@ -1,0 +1,44 @@
+########################################################################
+# TimeseriesObject                                                     #
+########################################################################
+properties:
+  chain:
+    description: iptables chain for this rule
+    example: INPUT
+    type: string
+  linenumber:
+    description: Line-number for the rule
+    example: 26
+    type: string
+  action:
+    description: What to do
+    example: "DROP"
+    type: string
+  protocol:
+    description: the protocol (tcp/udp/etc)
+    example: tcp
+    type: string
+  option:
+    description: rule options (mods etc)
+    example: comment
+    type: string
+  source:
+    description: The source IP address
+    example: 1.2.3.4
+    type: string
+  destination:
+    description: The destination IP address
+    example: 1.2.3.4
+    type: string
+  extensions:
+    description: Any extensions used for this rule
+    example: "/* comment here */"
+    type: string
+required:
+- chain
+- linenumber
+- protocol
+- source
+- action
+- destination
+

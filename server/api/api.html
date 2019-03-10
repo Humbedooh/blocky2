@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<h1>blocky/2 JSON API</h1>
+<h3>Overview:</h3><ul style='font-size: 12px; font-family: Open Sans, sans-serif;'><li><a href='#get-api-activity'>GET /api/activity</a>: Displays the current activity entries</li>
+<li><a href='#delete-api-bans'>DELETE /api/bans</a>: Remove a whitelist entry</li>
+<li><a href='#get-api-bans'>GET /api/bans</a>: Displays the current banlist entries</li>
+<li><a href='#put-api-bans'>PUT /api/bans</a>: Add a banmlist entry</li>
+<li><a href='#put-api-myrules'>PUT /api/myrules</a>: Set a host's iptables list</li>
+<li><a href='#delete-api-rules'>DELETE /api/rules</a>: Remove a rule entry</li>
+<li><a href='#get-api-rules'>GET /api/rules</a>: Displays the current ruleset entries</li>
+<li><a href='#put-api-rules'>PUT /api/rules</a>: Adds or overrides a ruleset</li>
+<li><a href='#post-api-search'>POST /api/search</a>: Search for whether an IP or block is banned or whitelisted</li>
+<li><a href='#delete-api-whitelist'>DELETE /api/whitelist</a>: Remove a whitelist entry</li>
+<li><a href='#get-api-whitelist'>GET /api/whitelist</a>: Displays the current whitelist entries</li>
+<li><a href='#put-api-whitelist'>PUT /api/whitelist</a>: Add a whitelist entry</li>
+</ul>
+
+                      <div id="get-api-activity" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #61affe; font-family: sans-serif; background: #61affe30;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #61affe;">GET</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/activity</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Displays the current activity entries</div>
+                          <div style="float: left; width: 90%;display: none; ">
+                            <h4>JSON parameters:</h4>
+                            
+                            <br/>
+                            
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="delete-api-bans" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #f93e3e; font-family: sans-serif; background: #f93e3e30;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #f93e3e;">DELETE</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/bans</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Remove a whitelist entry</div>
+                          <div style="float: left; width: 90%;display: block; ">
+                            <h4>JSON parameters:</h4>
+                            <div style='float: left; width: 90%;'><blockquote><pre style='width: 600px;'><kbd><b>force:</b></kbd> (boolean) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>Force addition, even if it means removing conflicting rules already in the DB</span><br/>
+<kbd><b>reason:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The reason for banning</span><br/>
+<kbd><b>rule:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>the ID of an existing rule</span><br/>
+<kbd><b>source:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>the source IP Address or Network</span><br/>
+<kbd><b>target:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>Target machine to ban on (or * for all machines)</span><br/>
+<kbd><b>timeout:</b></kbd> (integer) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>If present and greater than 0, denotes the UNIX timestamp when this rule stops working</span><br/>
+</pre>
+</blockquote></div>
+                            <br/>
+                            <div style='float: left; width: 90%;'><h4>Input examples:</h4><blockquote><pre style='width: 600px;'><b>application/json</b>:
+{}</pre></blockquote>
+</div>
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{
+    "message": "Action completed"
+}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="get-api-bans" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #61affe; font-family: sans-serif; background: #61affe30;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #61affe;">GET</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/bans</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Displays the current banlistr entries</div>
+                          <div style="float: left; width: 90%;display: none; ">
+                            <h4>JSON parameters:</h4>
+                            
+                            <br/>
+                            
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="put-api-bans" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #fca130; font-family: sans-serif; background: #fca13030;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #fca130;">PUT</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/bans</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Add a banmlist entry</div>
+                          <div style="float: left; width: 90%;display: block; ">
+                            <h4>JSON parameters:</h4>
+                            <div style='float: left; width: 90%;'><blockquote><pre style='width: 600px;'><kbd><b>force:</b></kbd> (boolean) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>Force addition, even if it means removing conflicting rules already in the DB</span><br/>
+<kbd><b>reason:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The reason for banning</span><br/>
+<kbd><b>rule:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>the ID of an existing rule</span><br/>
+<kbd><b>source:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>the source IP Address or Network</span><br/>
+<kbd><b>target:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>Target machine to ban on (or * for all machines)</span><br/>
+<kbd><b>timeout:</b></kbd> (integer) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>If present and greater than 0, denotes the UNIX timestamp when this rule stops working</span><br/>
+</pre>
+</blockquote></div>
+                            <br/>
+                            <div style='float: left; width: 90%;'><h4>Input examples:</h4><blockquote><pre style='width: 600px;'><b>application/json</b>:
+{}</pre></blockquote>
+</div>
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{
+    "message": "Action completed"
+}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="put-api-myrules" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #fca130; font-family: sans-serif; background: #fca13030;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #fca130;">PUT</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/myrules</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Set a host's iptables list</div>
+                          <div style="float: left; width: 90%;display: block; ">
+                            <h4>JSON parameters:</h4>
+                            
+                            <br/>
+                            <div style='float: left; width: 90%;'><h4>Input examples:</h4><blockquote><pre style='width: 600px;'><b>application/json</b>:
+{
+    "iptables": [
+        {
+            "action": "DROP",
+            "chain": "INPUT",
+            "destination": "1.2.3.4",
+            "extensions": "/* comment here */",
+            "linenumber": 26,
+            "option": "comment",
+            "protocol": "tcp",
+            "source": "1.2.3.4"
+        }
+    ]
+}</pre></blockquote>
+</div>
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{
+    "message": "Action completed"
+}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="delete-api-rules" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #f93e3e; font-family: sans-serif; background: #f93e3e30;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #f93e3e;">DELETE</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/rules</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Remove a rule entry</div>
+                          <div style="float: left; width: 90%;display: block; ">
+                            <h4>JSON parameters:</h4>
+                            <div style='float: left; width: 90%;'><blockquote><pre style='width: 600px;'><kbd><b>limit:</b></kbd> (integer) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The limit that causes a ban</span><br/>
+<kbd><b>name:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The name of the rule</span><br/>
+<kbd><b>query:</b></kbd> (array) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The individual query args to look for</span><br/>
+<kbd><b>rid:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>rule ID, if overriding a previous rule</span><br/>
+<kbd><b>span:</b></kbd> (integer) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The span (in hours) within which to look for offenses</span><br/>
+<kbd><b>type:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The type of rule</span><br/>
+</pre>
+</blockquote></div>
+                            <br/>
+                            <div style='float: left; width: 90%;'><h4>Input examples:</h4><blockquote><pre style='width: 600px;'><b>application/json</b>:
+{}</pre></blockquote>
+</div>
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{
+    "message": "Action completed"
+}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="get-api-rules" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #61affe; font-family: sans-serif; background: #61affe30;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #61affe;">GET</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/rules</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Displays the current ruleset entries</div>
+                          <div style="float: left; width: 90%;display: none; ">
+                            <h4>JSON parameters:</h4>
+                            
+                            <br/>
+                            
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="put-api-rules" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #fca130; font-family: sans-serif; background: #fca13030;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #fca130;">PUT</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/rules</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Adds or overrides a ruleset</div>
+                          <div style="float: left; width: 90%;display: block; ">
+                            <h4>JSON parameters:</h4>
+                            <div style='float: left; width: 90%;'><blockquote><pre style='width: 600px;'><kbd><b>limit:</b></kbd> (integer) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The limit that causes a ban</span><br/>
+<kbd><b>name:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The name of the rule</span><br/>
+<kbd><b>query:</b></kbd> (array) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The individual query args to look for</span><br/>
+<kbd><b>rid:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>rule ID, if overriding a previous rule</span><br/>
+<kbd><b>span:</b></kbd> (integer) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The span (in hours) within which to look for offenses</span><br/>
+<kbd><b>type:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The type of rule</span><br/>
+</pre>
+</blockquote></div>
+                            <br/>
+                            <div style='float: left; width: 90%;'><h4>Input examples:</h4><blockquote><pre style='width: 600px;'><b>application/json</b>:
+{}</pre></blockquote>
+</div>
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{
+    "message": "Action completed"
+}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="post-api-search" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #49cc5c; font-family: sans-serif; background: #49cc5c30;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #49cc5c;">POST</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/search</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Search for whether an IP or block is banned or whitelisted</div>
+                          <div style="float: left; width: 90%;display: block; ">
+                            <h4>JSON parameters:</h4>
+                            <div style='float: left; width: 90%;'><blockquote><pre style='width: 600px;'><kbd><b>source:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>IP Address or Network to search for</span><br/>
+</pre>
+</blockquote></div>
+                            <br/>
+                            <div style='float: left; width: 90%;'><h4>Input examples:</h4><blockquote><pre style='width: 600px;'><b>application/json</b>:
+{}</pre></blockquote>
+</div>
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="delete-api-whitelist" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #f93e3e; font-family: sans-serif; background: #f93e3e30;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #f93e3e;">DELETE</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/whitelist</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Remove a whitelist entry</div>
+                          <div style="float: left; width: 90%;display: block; ">
+                            <h4>JSON parameters:</h4>
+                            <div style='float: left; width: 90%;'><blockquote><pre style='width: 600px;'><kbd><b>force:</b></kbd> (boolean) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>Force addition, even if it means removing conflicting rules already in the DB</span><br/>
+<kbd><b>reason:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The reason for banning</span><br/>
+<kbd><b>rule:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>the ID of an existing rule</span><br/>
+<kbd><b>source:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>the source IP Address or Network</span><br/>
+<kbd><b>target:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>Target machine to ban on (or * for all machines)</span><br/>
+<kbd><b>timeout:</b></kbd> (integer) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>If present and greater than 0, denotes the UNIX timestamp when this rule stops working</span><br/>
+</pre>
+</blockquote></div>
+                            <br/>
+                            <div style='float: left; width: 90%;'><h4>Input examples:</h4><blockquote><pre style='width: 600px;'><b>application/json</b>:
+{}</pre></blockquote>
+</div>
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{
+    "message": "Action completed"
+}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="get-api-whitelist" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #61affe; font-family: sans-serif; background: #61affe30;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #61affe;">GET</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/whitelist</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Displays the current whitelist entries</div>
+                          <div style="float: left; width: 90%;display: none; ">
+                            <h4>JSON parameters:</h4>
+                            
+                            <br/>
+                            
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div id="put-api-whitelist" style="margin: 20px; display: flex; box-sizing: border-box; width: 900px; border-radius: 6px; border: 1px solid #fca130; font-family: sans-serif; background: #fca13030;">
+                        <div style="min-height: 32px;">
+                          <!-- method -->
+                          
+                          <div style="float: left; align-items: center; margin: 4px; border-radius: 5px; text-align: center; padding-top: 4px; height: 20px; width: 100px; color: #FFF; font-weight: bold; background: #fca130;">PUT</div>
+                          
+                          <!-- path and summary -->
+                          <span style="display: flex; padding-top: 6px;"><kbd><strong>/api/whitelist</strong></kbd></span>
+                          <div style="box-sizing: border-box; flex: 1; font-size: 13px; font-family: Open Sans, sans-serif; float: left; padding-top: 6px; margin-left: 20px;">
+                          Add a whitelist entry</div>
+                          <div style="float: left; width: 90%;display: block; ">
+                            <h4>JSON parameters:</h4>
+                            <div style='float: left; width: 90%;'><blockquote><pre style='width: 600px;'><kbd><b>force:</b></kbd> (boolean) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>Force addition, even if it means removing conflicting rules already in the DB</span><br/>
+<kbd><b>reason:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>The reason for banning</span><br/>
+<kbd><b>rule:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>the ID of an existing rule</span><br/>
+<kbd><b>source:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>the source IP Address or Network</span><br/>
+<kbd><b>target:</b></kbd> (string) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>Target machine to ban on (or * for all machines)</span><br/>
+<kbd><b>timeout:</b></kbd> (integer) <span style='font-size: 12px; font-family: Open Sans, sans-serif;'>If present and greater than 0, denotes the UNIX timestamp when this rule stops working</span><br/>
+</pre>
+</blockquote></div>
+                            <br/>
+                            <div style='float: left; width: 90%;'><h4>Input examples:</h4><blockquote><pre style='width: 600px;'><b>application/json</b>:
+{}</pre></blockquote>
+</div>
+                          </div>
+                          <div style="float: left; width: 90%; ">
+                            <h4>Response examples:</h4>
+                            <blockquote><div style='float: left; width: 90%;'><pre style='width: 600px;'><b>200</b>:
+{
+    "message": "Action completed"
+}</pre>
+</div>
+<div style='float: left; width: 90%;'><pre style='width: 600px;'><b>default</b>:
+{
+    "code": 403,
+    "reason": "You need to be logged in to view this endpoint!"
+}</pre>
+</div>
+</blockquote>
+                          </div>
+                        </div>
+                      </div>
+                      
+</body></html>

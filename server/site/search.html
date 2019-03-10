@@ -1,0 +1,47 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Search - Blocky/2</title>
+    <link rel="stylesheet" type="text/css" href="css/blocky.css">
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
+  </head>
+  <body onload="search(location.search.substr(1));">
+      <nav id="topmenu">
+        <img src="images/logo.svg" style="height: 54px; margin: 2px 20px; "/>
+        <ul>
+          <li><a href="./">Front page</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="rules.html">Ban Rules</a></li>
+          <li><a href="whitelist.html">Whitelist</a></li>
+          <li><a href="addban.html">Add a ban</a></li>
+          <li><a href="activity.html">Activity Log</a></li>
+        </ul>
+      </nav>
+      
+    <div id="wrapper">
+      <form onsubmit="search(document.getElementById('source').value); return false;">
+      IP/CIDR: <input type="text" id="source" style="width: 190px;" placeholder="IP Address or Network Block..."/>
+      <input type="submit" value="Search"/>
+      </form>
+      <div id="results">
+        <br/>
+        You can search for a single IPv4 or IPv6 address, or use CIDR notation to
+        find a block of IPs. <br/>Any IP or block affected by a ban or whitelisting that
+        touches on the IP/Network you search for will be displayed.<br/><br/>
+        Examples:
+        <ul>
+          <li>1.2.3.4</li>
+          <li>2001:ab3f:0ae2::</li>
+          <li>1.2.0.0/16</li>
+          <li>2a01:4f8:192:528c::2/64</li>
+        </ul>
+      </div>
+    </div>
+    <script src="js/moment.js" type="text/javascript"></script>
+    <script src="js/timezones.js" type="text/javascript"></script>
+    <script src="js/blocky.js" type="text/javascript"></script>
+  </body>
+</html>
+

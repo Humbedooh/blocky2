@@ -1,0 +1,24 @@
+########################################################################
+# IPAddress                                                            #
+########################################################################
+properties:
+  source:
+    type: string
+    description: the source IP Address or Network
+  target:
+    type: string
+    description: Target machine to ban on (or * for all machines)
+  reason:
+    type: string
+    description: The reason for banning
+  timeout:
+    type: integer
+    description: If present and greater than 0, denotes the UNIX timestamp when this rule stops working
+  force:
+    type: boolean
+    description: Force addition, even if it means removing conflicting rules already in the DB
+  rule:
+    type: string
+    description: the ID of an existing rule
+
+  
