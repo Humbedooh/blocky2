@@ -341,7 +341,7 @@ def start(DB, config, pidfile):
             if not DB.ES.exists(index=DB.dbname, doc_type = 'ban', id = banid):
                 rdns = bad_ip['ip']
                 try:
-                    rdns = socket.gethostbyaddr(bad_ip['ip'])
+                    rdns = socket.gethostbyaddr(bad_ip['ip'])[0]
                 except:
                     pass # don't care, at all
                 bad_ip['dns'] = rdns if rdns else bad_ip['ip']
