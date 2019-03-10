@@ -118,7 +118,7 @@ def run(API, environ, indata, session):
         for host in iptables:
             for rule in host['rules']:
                 block = rule['ip']
-                if me in block or block in me or me == block and block != anything:
+                if (me in block or block in me or me == block ) and (block != anything and me != anything):
                     rule['hostname'] = host['hostname']
                     rule['ip'] = str(rule['ip']) # stringify
                     found['iptables'].append(rule)
