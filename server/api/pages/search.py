@@ -54,7 +54,7 @@ import time
 import bcrypt
 import hashlib
 import plugins.worker
-
+import netaddr
 
 def find_rule(DB, doctype, ip):
     """ Find a rule, either v1 or v2 style """
