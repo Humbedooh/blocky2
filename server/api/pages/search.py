@@ -114,10 +114,11 @@ def run(API, environ, indata, session):
         
         # Find any iptables rules that may have it as well (max 10)
         found_iptables = 0
+        anything = netaddr.IPNetwork("0.0.0.0/0")
         for host in iptables:
             for rule in host['rules']:
                 block = rule['ip']
-                if me in block or block in me or me == block:
+                if me in block or block in me or me == block and block != anything:
                     rule['hostname'] = host['hostname']
                     rule['ip'] = str(rule['ip']) # stringify
                     found['iptables'].append(rule)
