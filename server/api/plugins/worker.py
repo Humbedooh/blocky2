@@ -30,7 +30,7 @@ import os
 import hashlib
 import socket
 
-DEBUG = True # If True, no DB writes/deletes will be done
+DEBUG = False # If True, no DB writes/deletes will be done
 
 def make_sha1(t, encoding = 'utf-8'):
     return hashlib.sha1(t.encode(encoding)).hexdigest()
