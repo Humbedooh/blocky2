@@ -226,7 +226,8 @@ def construct_query(doctype, query, initial_terms = []):
 
 
 def start(DB, config, pidfile):
-    time.sleep(120)
+    addnote(DB, 'system', "(re)starting Blocky/2...")
+    time.sleep(15)
     # First, check that indices are present
     # We're assuming ES6 here...
     if type(DB.ES) is plugins.database.BlockyESWrapper:
