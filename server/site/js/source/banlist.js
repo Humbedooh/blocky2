@@ -36,7 +36,7 @@ function list_bans(state, json) {
             ];
             let name = res.ip;
             if (res.dns && res.dns.length > 0 && res.dns != res.ip && res.dns.match) {
-                let m = res.dns.match(/(([^.]+\.((com?|net|org|edu|)\.)?)[^.]+)/);
+                let m = res.dns.match(/(([^.]+\.((com?|net|org|edu|)\.)?)[^.]+)$/);
                 lastbit = m ? m[1] : '';
                 name = "%s (%s)".format(res.ip, lastbit);
             }
