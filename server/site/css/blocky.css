@@ -215,9 +215,6 @@ p {
     font-size: 0.7rem;
     font-family: sans-serif;
     text-transform: uppercase;
-    padding: 2px;
-    padding-left: 12px;
-    padding-right: 12px;
     max-width: 200px;
     overflow: hidden;
     white-space:nowrap;
@@ -237,6 +234,12 @@ p {
     cursor: pointer;
     height: 24px;
     color: #FFF;
+}
+
+#topmenu a {
+  padding: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .event_title {
