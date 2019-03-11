@@ -26,7 +26,7 @@ function list_activity(state, json) {
             if (res.epoch) {
                 when = moment(res.epoch*1000.0).fromNow();
             }
-            res.text = res.text.replace(/\b([a-f0-9]{8})[a-f0-9]{32}\b/g, (a) => a + "..");
+            res.text = res.text.replace(/\b([a-f0-9]{8})[a-f0-9]{32}\b/g, (a) => a[1] + "..");
             let tr = new HTML('tr', {}, [
                 new HTML('td', {}, _kbd(res.ntype)),
                 new HTML('td', moment(res.epoch*1000.0).fromNow()),
