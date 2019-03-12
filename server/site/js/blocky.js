@@ -2221,7 +2221,9 @@ function search_callback(state, json) {
         for (var i = 0; i < json.results.iptables.length; i++) {
             let res = json.results.iptables[i];
             let txt = _div("Found on %s, iptables line %u in the %s chain, as %s".format(res.hostname, res.linenumber, res.chain, res.source));
+            let link = new HTML('a', {style: {marginLeft: '10px'}, href:"whitelist.html?%s".format(res.source)}, "Create whitelist rule")
             div.inject(txt);
+            txt.inject(link);
         }
     }
 }
@@ -2314,6 +2316,13 @@ function init_whitelist(source) {
     let obj = document.getElementById('whitelist');
     obj.innerText = "Fetching whitelist, hang on...";
     GET('./api/whitelist', list_whites, manage_error, {});
+    
+    if (source && source.length > 0) {
+      document.getElementById('source').value = source;
+      document.getElementById('force').checked = true;
+      document.getElementById('reason').value = "Manual whitelist for 1 hour to unban from iptables.";
+      document.getElementById('timeout').value = parseInt((new Date().getTime()/1000) + 3600);
+    }
 }
 
 function whitelist_added(state, json) {

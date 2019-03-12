@@ -118,7 +118,9 @@ function search_callback(state, json) {
         for (var i = 0; i < json.results.iptables.length; i++) {
             let res = json.results.iptables[i];
             let txt = _div("Found on %s, iptables line %u in the %s chain, as %s".format(res.hostname, res.linenumber, res.chain, res.source));
+            let link = new HTML('a', {style: {marginLeft: '10px'}, href:"whitelist.html?%s".format(res.source)}, "Create whitelist rule")
             div.inject(txt);
+            txt.inject(link);
         }
     }
 }

@@ -56,6 +56,13 @@ function init_whitelist(source) {
     let obj = document.getElementById('whitelist');
     obj.innerText = "Fetching whitelist, hang on...";
     GET('./api/whitelist', list_whites, manage_error, {});
+    
+    if (source && source.length > 0) {
+      document.getElementById('source').value = source;
+      document.getElementById('force').checked = true;
+      document.getElementById('reason').value = "Manual whitelist for 1 hour to unban from iptables.";
+      document.getElementById('timeout').value = parseInt((new Date().getTime()/1000) + 3600);
+    }
 }
 
 function whitelist_added(state, json) {
