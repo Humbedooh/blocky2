@@ -23,21 +23,13 @@
       
     <div id="wrapper">
       <form onsubmit="fail2ban(document.getElementById('source').value); return false;">
-      IP/CIDR: <input type="text" id="source" style="width: 190px;" placeholder="IP Address or Network Block..."/>
+      User ID: <input type="text" id="source" style="width: 190px;" placeholder="Username"/>
       <input type="submit" value="Search"/>
       </form>
       <div id="results">
         <br/>
-        You can search for a single IPv4 or IPv6 address, or use CIDR notation to
-        find a block of IPs. <br/>Any IP or block affected by a ban or whitelisting that
-        touches on the IP/Network you search for will be displayed.<br/><br/>
-        Examples:
-        <ul>
-          <li>1.2.3.4</li>
-          <li>2001:ab3f:0ae2::</li>
-          <li>1.2.0.0/16</li>
-          <li>2a01:4f8:192:528c::2/64</li>
-        </ul>
+        Here you can search for auth failures that triggered fail2ban. Just enter a username!
+        
       </div>
     </div>
     <script src="js/moment.js" type="text/javascript"></script>
