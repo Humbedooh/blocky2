@@ -237,6 +237,29 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: unexpected error
       summary: Add a banmlist entry
+  /api/fail2ban:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchObject'
+        description: Search query
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+          description: Search result
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unexpected error
+      summary: Search for whether a user was blocked via fail2ban
   /api/myrules:
     put:
       requestBody:
