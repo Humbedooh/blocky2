@@ -124,6 +124,7 @@ function list_bans(state, json) {
                 lastbit = m ? m[1] : '';
                 name = "%s (%s)".format(res.ip, lastbit);
             }
+            res.reason = res.reason.replace(/\b(\d{4,12})\b/g, (a,b) => b.pretty());
             let tr = new HTML('tr', {}, [
                 new HTML('td', {}, _kbd(name)),
                 new HTML('td', timeout),
