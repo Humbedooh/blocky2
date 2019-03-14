@@ -89,6 +89,7 @@ function list_bans(state, json) {
         div.inject(_hr());
         let wheader = _h3({class:'subtitle'},"Currently banned IP addresses/networks (%u):".format(json.bans.length));
         div.inject(wheader);
+        
         let tbl = new HTML('table', { style: {fontSize: '0.8rem'}});
         let tbh = new HTML('thead');
         let tbody = new HTML('tbody');
@@ -102,7 +103,12 @@ function list_bans(state, json) {
         tbl.inject(tbh);
         
         div.inject(tbl);
+        tbl.inject(tbody);
         for (var i = 0; i < json.bans.length; i++) {
+            if (i > 100) {
+              break;
+              div.inject(_i("Only the first 100 results are shown here. Use the search feature to find more IPs."));
+            }
             let res = json.bans[i];
             let timeout = 'unknown?';
             if (res.epoch) {
@@ -125,7 +131,7 @@ function list_bans(state, json) {
             ]);
             tbody.inject(tr);
         }
-        tbl.inject(tbody);
+        
         obj.inject(div);
     }
 }
