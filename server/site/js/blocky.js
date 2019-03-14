@@ -105,9 +105,10 @@ function list_bans(state, json) {
         div.inject(tbl);
         tbl.inject(tbody);
         for (var i = 0; i < json.bans.length; i++) {
-            if (i > 100) {
-              break;
-              div.inject(_i("Only the first 100 results are shown here. Use the search feature to find more IPs."));
+            if (i > 50) {
+              div.inject(_hr());
+              div.inject(_i("Only the 50 latest results are shown here. Use the search feature to find more IPs."));
+              break
             }
             let res = json.bans[i];
             let timeout = 'unknown?';
